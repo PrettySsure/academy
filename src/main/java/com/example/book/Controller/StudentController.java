@@ -8,15 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
 @RestController
 public class StudentController {
 
     @Autowired
     private StudentService studentService;
 
-    @GetMapping("/students/")
-    private String getAllStudents() {
-        return "Hello world";
+    @GetMapping("/students")
+    private List<Student> getAllStudents() {
+
+        return studentService.getAll();
     }
 
 }
