@@ -2,10 +2,7 @@ package com.example.book.Model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -13,6 +10,7 @@ import javax.persistence.Table;
 public class Student {
     @Id
     @Column(name= "id")
+    @GeneratedValue
     private Long id;
     @Column(name= "first_name")
     private String firstName;
