@@ -19,8 +19,8 @@ public class AddressController {
     }
 
     @GetMapping("/addresses/{addressId}")
-    public Address getAddress(@PathVariable Long AddressId) {
-        return addressService.getAddressById(AddressId);
+    public Address getAddress(@PathVariable Long addressId) {
+        return addressService.getAddressById(addressId);
     }
 
     @PostMapping("/addresses")
@@ -30,8 +30,8 @@ public class AddressController {
     }
 
     @DeleteMapping("/addresses/{addressId}")
-    public String deletAddress(@PathVariable Long AddressId) {
-        addressService.deleteAddressById(AddressId);
+    public String deletAddress(@PathVariable Long addressId) {
+        addressService.deleteAddressById(addressId);
         return "address deleted";
     }
 
