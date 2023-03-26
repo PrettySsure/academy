@@ -1,5 +1,6 @@
 package com.example.book.Controller;
 
+import com.example.book.DTO.StudentDTO;
 import com.example.book.Model.Student;
 import com.example.book.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,9 @@ public class StudentController {
     }
 
     @PostMapping("/students")
-    public String createStudent(@RequestBody Student student) {
-        studentService.createStudent(student);
-        return "student created";
+    public StudentDTO createStudent(@RequestBody Student student) {
+        StudentDTO response = studentService.createStudent(student);
+        return response;
     }
 
     @DeleteMapping("/students/{studentId}")

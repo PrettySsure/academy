@@ -1,5 +1,6 @@
 package com.example.book.Service;
 
+import com.example.book.DTO.StudentDTO;
 import com.example.book.Model.Student;
 import com.example.book.Repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,14 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public void createStudent(Student student) {
-        studentRepository.save(student);
+    public StudentDTO createStudent(Student student) {
+        StudentDTO response = new StudentDTO();
+        Student createdStudent = studentRepository.save(student);
+        response.setFirstName(createdStudent.getFirstName());
+        response.setLastName(createdStudent.getLastName());
+        response.setFullName(createdStudent.getFirstName() + createdStudent.getLastName());
+        response.setAge(createdStudent.getAge());
+        return response;
     }
 
     @Override
