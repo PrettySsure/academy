@@ -9,5 +9,5 @@ public interface StudentService {
     public List<Student> getAll();
     public Student getStudentById(Long id);
     public StudentDTO createStudent(Student student);
-    public void deleteStudentById(Long id);
+    public StudentDTO deleteStudentById(Long id);
 }

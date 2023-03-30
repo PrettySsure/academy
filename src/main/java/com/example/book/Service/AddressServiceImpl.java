@@ -1,6 +1,9 @@
 package com.example.book.Service;
 
+import com.example.book.DTO.AddressDTO;
+import com.example.book.DTO.StudentDTO;
 import com.example.book.Model.Address;
+import com.example.book.Model.Student;
 import com.example.book.Repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AddressServiceImpl implements AddressService{
+public class AddressServiceImpl implements AddressService {
 
     @Autowired
     private AddressRepository addressRepository;
@@ -26,13 +29,29 @@ public class AddressServiceImpl implements AddressService{
     }
 
     @Override
-    public void createAddress(Address address) {
-        addressRepository.save(address);
+    public AddressDTO createAddress(Address address) {
+        AddressDTO response = new AddressDTO();
+        Address createdAddress = addressRepository.save(address);
+        response.setFullAdrress(createdAddress.getAddressNumber() + " " + createdAddress.getStreet() + " " + createdAddress.getWard());
+        response.setAddressNumber(createdAddress.getAddressNumber());
+        response.setStreet(createdAddress.getStreet());
+        response.setWard(createdAddress.getWard());
+
+
+        return response;
     }
 
     @Override
-    public void deleteAddressById(Long id) {
+    public AddressDTO deleteAddressById(Long id) {
+        AddressDTO addressDTO = new AddressDTO();
+        Address deletedAddress = addressRepository.findById(id).get();
         addressRepository.deleteById(id);
+        addressDTO.setFullAdrress(deletedAddress.getAddressNumber() + " " + deletedAddress.getStreet() + " " + deletedAddress.getWard());
+        addressDTO.setAddressNumber(deletedAddress.getAddressNumber());
+        addressDTO.setStreet(deletedAddress.getStreet());
+        addressDTO.setWard(deletedAddress.getWard());
+        return addressDTO;
     }
-    }
+}
+
 

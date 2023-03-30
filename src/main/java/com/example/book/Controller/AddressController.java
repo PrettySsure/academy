@@ -1,5 +1,6 @@
 package com.example.book.Controller;
 
+import com.example.book.DTO.AddressDTO;
 import com.example.book.Model.Address;
 import com.example.book.Service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +25,15 @@ public class AddressController {
     }
 
     @PostMapping("/addresses")
-    public String createAddress(@RequestBody Address address) {
-        addressService.createAddress(address);
-        return "address created";
+    public AddressDTO createAddress(@RequestBody Address address) {
+        AddressDTO response = addressService.createAddress(address);
+        return response;
     }
 
     @DeleteMapping("/addresses/{addressId}")
-    public String deletAddress(@PathVariable Long addressId) {
-        addressService.deleteAddressById(addressId);
-        return "address deleted";
+    public AddressDTO deleteAddress(@PathVariable Long addressId) {
+        AddressDTO response = addressService.deleteAddressById(addressId);
+        return response ;
     }
 
 }

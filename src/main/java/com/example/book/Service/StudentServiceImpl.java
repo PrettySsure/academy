@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class StudentServiceImpl implements StudentService{
+public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
@@ -38,7 +38,14 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public void deleteStudentById(Long id) {
+    public StudentDTO deleteStudentById(Long id) {
+        StudentDTO studentDTO = new StudentDTO();
+        Student deletedStudent = studentRepository.findById(id).get();
         studentRepository.deleteById(id);
+        studentDTO.setFirstName(deletedStudent.getFirstName());
+        studentDTO.setLastName(deletedStudent.getLastName());
+        studentDTO.setFullName(deletedStudent.getFirstName() + " " + deletedStudent.getLastName());
+        studentDTO.setAge(deletedStudent.getAge());
+        return studentDTO;
     }
 }

@@ -32,8 +32,8 @@ public class StudentController {
     }
 
     @DeleteMapping("/students/{studentId}")
-    public String deleteStudent(@PathVariable Long studentId) {
-        studentService.deleteStudentById(studentId);
-        return "student deleted";
+    public StudentDTO deleteStudent(@PathVariable Long studentId) {
+        StudentDTO response = studentService.deleteStudentById(studentId);
+        return response ;
     }
 }
