@@ -36,4 +36,10 @@ public class StudentController {
         StudentDTO response = studentService.deleteStudentById(studentId);
         return response ;
     }
+
+    @PutMapping("/students/{studentId}")
+    public StudentDTO updateStudent(@PathVariable Long studentId, @RequestBody Student student) {
+        StudentDTO response = studentService.updateStudentById(studentId, student);
+        return response;
+    }
 }

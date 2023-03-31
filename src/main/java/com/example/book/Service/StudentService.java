@@ -10,4 +10,5 @@ public interface StudentService {
     public Student getStudentById(Long id);
     public StudentDTO createStudent(Student student);
     public StudentDTO deleteStudentById(Long id);
+    public StudentDTO updateStudentById(Long id, Student student);
 }

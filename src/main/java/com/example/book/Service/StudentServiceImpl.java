@@ -48,4 +48,19 @@ public class StudentServiceImpl implements StudentService {
         studentDTO.setAge(deletedStudent.getAge());
         return studentDTO;
     }
+
+    @Override
+    public StudentDTO updateStudentById(Long id, Student student) {
+        StudentDTO studentDTO = new StudentDTO();
+        Student updatedStudent = studentRepository.findById(id).get();
+        updatedStudent.setFirstName(student.getFirstName());
+        updatedStudent.setLastName(student.getLastName());
+        updatedStudent.setAge(student.getAge());
+        studentRepository.save(updatedStudent);
+        studentDTO.setFirstName(updatedStudent.getFirstName());
+        studentDTO.setLastName(updatedStudent.getLastName());
+        studentDTO.setFullName(updatedStudent.getFirstName() + " " + updatedStudent.getLastName());
+        studentDTO.setAge(updatedStudent.getAge());
+        return studentDTO;
+    }
 }

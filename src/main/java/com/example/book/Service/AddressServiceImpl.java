@@ -32,12 +32,10 @@ public class AddressServiceImpl implements AddressService {
     public AddressDTO createAddress(Address address) {
         AddressDTO response = new AddressDTO();
         Address createdAddress = addressRepository.save(address);
-        response.setFullAdrress(createdAddress.getAddressNumber() + " " + createdAddress.getStreet() + " " + createdAddress.getWard());
+        response.setFullAddress(createdAddress.getAddressNumber() + " " + createdAddress.getStreet() + " " + createdAddress.getWard());
         response.setAddressNumber(createdAddress.getAddressNumber());
         response.setStreet(createdAddress.getStreet());
         response.setWard(createdAddress.getWard());
-
-
         return response;
     }
 
@@ -46,7 +44,7 @@ public class AddressServiceImpl implements AddressService {
         AddressDTO addressDTO = new AddressDTO();
         Address deletedAddress = addressRepository.findById(id).get();
         addressRepository.deleteById(id);
-        addressDTO.setFullAdrress(deletedAddress.getAddressNumber() + " " + deletedAddress.getStreet() + " " + deletedAddress.getWard());
+        addressDTO.setFullAddress(deletedAddress.getAddressNumber() + " " + deletedAddress.getStreet() + " " + deletedAddress.getWard());
         addressDTO.setAddressNumber(deletedAddress.getAddressNumber());
         addressDTO.setStreet(deletedAddress.getStreet());
         addressDTO.setWard(deletedAddress.getWard());
